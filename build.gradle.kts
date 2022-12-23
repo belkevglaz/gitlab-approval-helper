@@ -9,10 +9,12 @@ plugins {
 
 group = "voneska.ru"
 version = "0.0.1"
+
 application {
 	mainClass.set("io.ktor.server.netty.EngineMain")
 
 	val isDevelopment: Boolean = project.ext.has("development")
+
 	applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
@@ -23,7 +25,10 @@ repositories {
 dependencies {
 	implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
 	implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
+	implementation("io.ktor:ktor-server-call-logging-jvm:$ktor_version")
+
 	implementation("ch.qos.logback:logback-classic:$logback_version")
+
 	testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
